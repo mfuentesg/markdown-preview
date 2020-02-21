@@ -1,8 +1,8 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { Controlled as CodeMirror } from 'react-codemirror2';
 
 import marked from 'marked';
-import hljs from 'highlight.js';
+import highlight from 'highlight.js';
 
 import 'codemirror/mode/markdown/markdown';
 import 'codemirror/lib/codemirror.css';
@@ -13,37 +13,23 @@ import './style.css';
 
 marked.setOptions({
   highlight: function (code, lang) {
-    const language = hljs.getLanguage(lang) ? lang : 'plaintext';
-    return hljs.highlight(language, code).value;
+    const language = highlight.getLanguage(lang) ? lang : 'plaintext';
+    return highlight.highlight(language, code).value;
   }
 });
 
-export default () => {
-  const [value, setValue] = useState('');
-
+export default ({ value, onChange }) => {
   return (
-    <div style={{
-      display: 'flex',
-      flexDirection: 'row',
-      height: '100vh'
-    }}>
-      <div style={{ width: '50%', boxSizing: 'border-box' }}>
-        <CodeMirror
-          value={value}
-          options={{
-            mode: 'markdown',
-            autofocus: true,
-            theme: 'material-darker',
-            lineNumbers: true,
-            lineWrapping: true
-          }}
-          onBeforeChange={(editor, data, value) => setValue(value)}
-        />
-      </div>
-      <div style={{ width: '50%', padding: '0 10px', boxSizing: 'border-box', overflow: 'auto' }}>
-        <div dangerouslySetInnerHTML={{ __html: marked(value) }}/>
-      </div>
-    </div>
-
+    <CodeMirror
+      value={value}
+      options={{
+        mode: 'markdown',
+        autofocus: true,
+        theme: 'material-darker',
+        lineNumbers: true,
+        lineWrapping: true
+      }}
+      onBeforeChange={(editor, data, value) => onChange(value)}
+    />
   );
 };
