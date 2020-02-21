@@ -25,8 +25,6 @@ export default () => {
     <div style={{
       display: 'flex',
       flexDirection: 'row',
-      alignItems: 'stretch',
-      justifyContent: 'space-between',
       height: '100vh'
     }}>
       <div style={{ width: '50%', boxSizing: 'border-box' }}>
