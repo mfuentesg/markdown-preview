@@ -1,0 +1,21 @@
+{
+  "name": "create-next-example-app",
+  "scripts": {
+    "dev": "next",
+    "build": "next build",
+    "start": "next start"
+  },
+  "dependencies": {
+    "@zeit/next-css": "^1.0.1",
+    "codemirror": "^5.52.0",
+    "css-loader": "^3.4.2",
+    "highlight.js": "^9.18.1",
+    "markdown": "^0.5.0",
+    "marked": "^0.8.0",
+    "next": "^9.1.7",
+    "react": "^16.12.0",
+    "react-codemirror2": "^6.0.0",
+    "react-dom": "^16.12.0",
+    "react-split": "^2.0.7"
+  }
+}
